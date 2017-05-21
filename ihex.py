@@ -67,7 +67,7 @@ class IHex(object):
       end = 0
       result = ""
       
-      for addr, data in self.areas.iteritems():
+      for addr, data in self.areas.items():
         if addr >= start:
           end = max(end, addr + len(data))
           result = result[:start] + data[start-addr:end-addr] + result[end:]
@@ -77,7 +77,7 @@ class IHex(object):
     else:
       result = ""
       
-      for addr, data in self.areas.iteritems():
+      for addr, data in self.areas.items():
         if addr >= start and addr < end:
           result = result[:start] + data[start-addr:end-addr] + result[end:]
       
@@ -90,7 +90,7 @@ class IHex(object):
     self.mode = mode
 
   def get_area(self, addr):
-    for start, data in self.areas.iteritems():
+    for start, data in self.areas.items():
       end = start + len(data)
       if addr >= start and addr <= end:
         return start
@@ -146,7 +146,7 @@ class IHex(object):
   def write(self):
     output = ""
     
-    for start, data in sorted(self.areas.iteritems()):
+    for start, data in sorted(self.areas.items()):
       i = 0
       segbase = 0
 
